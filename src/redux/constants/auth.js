@@ -1,0 +1,4 @@
+export const START_AUTH_USER = 'START_AUTH_USER'
+export const SUCCESS_AUTH_USER = 'SUCCESS_AUTH_USER'
+export const ERROR_AUTH_USER = 'ERROR_AUTH_USER'
+export const LOGOUT = 'LOGOUT'
