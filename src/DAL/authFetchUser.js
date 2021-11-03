@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { startFetchUser, successAuthUser, errorAuthUser } from '../redux/auth/actions/actionsCreatorsAuth'
+import { startFetchUser, successAuthUser, errorAuthUser } from '../redux/auth/actions/actionsCreators'
 
 export const fetchUserData = (url, userData) => dispatch => {
    dispatch(startFetchUser())

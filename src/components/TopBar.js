@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink, useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { logout } from '../redux/auth/actions/actionsCreatorsAuth'
+import { logout } from '../redux/auth/actions/actionsCreators'
 
 export const TopBar = () => {
    const dispatch = useDispatch()
@@ -21,10 +21,10 @@ export const TopBar = () => {
                loggedIn
                   ? (
                      <ul id="nav-mobile" className="right hide-on-med-and-down">
+                        <li><NavLink to='/users'>Users</NavLink></li>
                         <li><NavLink to='/'>Posts</NavLink></li>
                         <li><NavLink to='/'>Posts</NavLink></li>
-                        <li><NavLink to='/'>Posts</NavLink></li>
-                        <li><button onClick={exit} className="waves-effect waves-light btn-large">Button</button></li>
+                        <li><button onClick={exit} className="waves-effect waves-light btn-large">LOGOUT</button></li>
                      </ul>
                   )
                   : (

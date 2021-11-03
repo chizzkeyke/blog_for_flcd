@@ -1,4 +1,4 @@
-import { START_AUTH_USER, SUCCESS_AUTH_USER, ERROR_AUTH_USER, LOGOUT } from '../actions/constatns'
+import { START_AUTH_USER, SUCCESS_AUTH_USER, ERROR_AUTH_USER, LOGOUT } from '../actions/actionTypes'
 
 const token = localStorage.getItem('token')
 
