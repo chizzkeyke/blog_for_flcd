@@ -1,4 +1,4 @@
-import { START_AUTH_USER, SUCCESS_AUTH_USER, ERROR_AUTH_USER, LOGOUT } from '../constants/auth'
+import { START_AUTH_USER, SUCCESS_AUTH_USER, ERROR_AUTH_USER, LOGOUT } from './constatns'
 
 export function startFetchUser() {
    return {

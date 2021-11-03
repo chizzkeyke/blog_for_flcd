@@ -1,9 +1,9 @@
 import React from 'react'
 import { NavLink, useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { logout } from '../redux/actions/auth'
+import { logout } from '../redux/auth/actions/actionsCreatorsAuth'
 
-const TopBar = () => {
+export const TopBar = () => {
    const dispatch = useDispatch()
    const loggedIn = useSelector(state => state.auth.isAuth)
    const history = useHistory()
@@ -20,14 +20,12 @@ const TopBar = () => {
             {
                loggedIn
                   ? (
-                     <>
-                        <ul id="nav-mobile" className="right hide-on-med-and-down">
-                           <li><NavLink to='/'>Posts</NavLink></li>
-                           <li><NavLink to='/'>Posts</NavLink></li>
-                           <li><NavLink to='/'>Posts</NavLink></li>
-                           <li><button onClick={exit} className="waves-effect waves-light btn-large">Button</button></li>
-                        </ul>
-                     </>
+                     <ul id="nav-mobile" className="right hide-on-med-and-down">
+                        <li><NavLink to='/'>Posts</NavLink></li>
+                        <li><NavLink to='/'>Posts</NavLink></li>
+                        <li><NavLink to='/'>Posts</NavLink></li>
+                        <li><button onClick={exit} className="waves-effect waves-light btn-large">Button</button></li>
+                     </ul>
                   )
                   : (
                      <ul id="nav-mobile" className="right hide-on-med-and-down">
@@ -40,5 +38,3 @@ const TopBar = () => {
       </nav>
    )
 }
-
-export default TopBar

@@ -2,10 +2,10 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import { Redirect } from 'react-router'
-import { fetchUserData } from '../DAL/authFetchUser'
+import { fetchUserData } from '../../DAL/authFetchUser'
 import { useDispatch } from 'react-redux'
 
-const Register = () => {
+export const Register = () => {
    const { register, handleSubmit } = useForm()
    const loggedIn = useSelector(state => state.auth.isAuth)
    const dispatch = useDispatch()
@@ -41,5 +41,3 @@ const Register = () => {
       </div>
    )
 }
-
-export default Register

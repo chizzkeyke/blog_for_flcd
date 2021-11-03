@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchUserData } from '../DAL/authFetchUser'
+import { fetchUserData } from '../../DAL/authFetchUser'
 
-const Login = () => {
+export const Login = () => {
    const titleText = 'Login'
    const linkText = "You don't have account ?"
    const urlLink = '/register'
@@ -58,5 +58,3 @@ const Login = () => {
 
    )
 }
-
-export default Login
