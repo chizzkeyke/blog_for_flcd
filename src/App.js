@@ -13,6 +13,7 @@ export const App = () => {
       <BrowserRouter>
          <TopBar />
          <Switch>
+            <Route path='/users?page=:id' component={UserList}/>
             <Route path='/users' component={UserList} />
             <Route path='/register' component={Register} />
             <Route path='/login' component={Login} />

@@ -1,26 +1,31 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getListUser } from '../../DAL/getListUsers'
+import { getNumberFromString } from '../../utils/getNumbersFrooString'
 import { Redirect } from 'react-router-dom'
+import { nanoid } from 'nanoid'
 
 import { Table, Avatar } from 'antd'
-import { Pagination } from '../Pagination'
+import { Pagination2 } from '../Pagination'
 
-export const UserList = () => {
+export const UserList = props => {
    const loggedIn = useSelector(state => state.auth.isAuth)
    const users = useSelector(state => state.user.users?.data)
    const loading = useSelector(state => state.auth.loading)
    const totalPages = useSelector(state => state.user.users.total_pages)
-
-
    const dispatch = useDispatch()
+
+   const paramProps = props.location.search === ''
+   const currentPage = paramProps ? 1 : getNumberFromString(props.location.search)
+
+   console.log(props)
 
    useEffect(() => {
       if (!loggedIn) {
          return
       }
-      dispatch(getListUser())
-   }, [dispatch, loggedIn])
+      dispatch(getListUser(currentPage))
+   }, [loggedIn, dispatch, currentPage])
 
    if (!loggedIn) {
       return <Redirect to='/' />
@@ -32,7 +37,7 @@ export const UserList = () => {
             title: 'Photo',
             dataIndex: 'avatar',
             key: 'avatar',
-            render: (avatar) => (<Avatar src={`${avatar}`} />),
+            render: (avatar) => (<Avatar src={`${avatar}`}/>),
          },
          {
             title: 'Email',
@@ -56,10 +61,11 @@ export const UserList = () => {
          },
       ]
 
+
       return (
          <>
             <Table dataSource={users} columns={columns} pagination={false} />
-            <Pagination totalPages={totalPages} />
+            <Pagination2 totalPages={totalPages} current={currentPage}/>
          </>
       )
    }

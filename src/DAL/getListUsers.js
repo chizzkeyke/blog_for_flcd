@@ -9,7 +9,6 @@ export const getListUser = (id = 1) => dispatch => {
    })
       .then(res => {
          dispatch(successFetchUsers(res.data))
-         console.log(res.status)
       })
       .catch(err => {
          dispatch(errorFetchUsers(err))
