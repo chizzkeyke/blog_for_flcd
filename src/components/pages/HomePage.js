@@ -2,14 +2,14 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { Pagination2 } from '../Pagination'
+import { Pagination } from '../Pagination'
 
 export const HomePage = () => {
    const loggedIn = useSelector(state => state.auth.isAuth)
    return (
       loggedIn
          ? <div>
-            <Pagination2 />
+            <Pagination />
          </div>
          : (
             <div>

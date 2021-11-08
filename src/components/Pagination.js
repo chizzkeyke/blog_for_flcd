@@ -55,7 +55,7 @@ import { useHistory } from 'react-router'
 //    )
 // }
 
-export const Pagination2 = ({ totalPages, current }) => {
+export const Pagination = ({ totalPages, current }) => {
    const pages = counterForArray(totalPages)
    const history = useHistory()
 
@@ -91,10 +91,10 @@ export const Pagination2 = ({ totalPages, current }) => {
    }
 
    return (
-      <div className='pagination_'>
-         {checkPrevNum() && <button onClick={goOnPreviousPage}>Prev</button>}
-         <div>{current}</div>
-         {checkNextNum() && <button onClick={goOnNextPage}>Next</button>}
+      <div className='block-pagination'>
+         {checkPrevNum() && <div onClick={goOnPreviousPage} className="waves-effect waves-light btn-large"><i className="material-icons left">arrow_back</i></div>}
+         <div className="waves-effect waves-light btn-large">{current}</div>
+         {checkNextNum() && <div onClick={goOnNextPage} className="waves-effect waves-light btn-large"><i className="material-icons right">arrow_forward</i></div>} 
       </div>
    )
 }

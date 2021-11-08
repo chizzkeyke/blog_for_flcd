@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getListUser } from '../../DAL/getListUsers'
-import { getNumberFromString } from '../../utils/getNumbersFrooString'
 import { Redirect } from 'react-router-dom'
 import { nanoid } from 'nanoid'
 
 import { Table, Avatar } from 'antd'
-import { Pagination2 } from '../Pagination'
+import { Pagination } from '../Pagination'
 
 export const UserList = props => {
    const loggedIn = useSelector(state => state.auth.isAuth)
@@ -16,9 +15,7 @@ export const UserList = props => {
    const dispatch = useDispatch()
 
    const paramProps = props.location.search === ''
-   const currentPage = paramProps ? 1 : getNumberFromString(props.location.search)
-
-   console.log(props)
+   const currentPage = paramProps ? 1 : Number(props.location.search.substr(6))
 
    useEffect(() => {
       if (!loggedIn) {
@@ -37,7 +34,7 @@ export const UserList = props => {
             title: 'Photo',
             dataIndex: 'avatar',
             key: 'avatar',
-            render: (avatar) => (<Avatar src={`${avatar}`}/>),
+            render: (avatar) => (<Avatar src={`${avatar}`} />),
          },
          {
             title: 'Email',
@@ -61,22 +58,38 @@ export const UserList = props => {
          },
       ]
 
+      let newUsersData
+
+      const createNewUserData = () => {
+         newUsersData = users?.map((user) => {
+            return {
+               avatar: user.avatar,
+               id: user.id,
+               email: user.email,
+               first_name: user.first_name,
+               last_name: user.last_name,
+               key: nanoid()
+            }
+         })
+      }
+
+      createNewUserData()
 
       return (
          <>
-            <Table dataSource={users} columns={columns} pagination={false} />
-            <Pagination2 totalPages={totalPages} current={currentPage}/>
+            <Table dataSource={newUsersData} columns={columns} pagination={false} />
+            <Pagination totalPages={totalPages} current={currentPage} />
          </>
       )
    }
 
    return (
-      <div>
+      <>
          {
             loading
-               ? (<h1>Loading....</h1>)
+               ? <h1>Loading ...</h1>
                : returnTableUserList()
          }
-      </div>
+      </>
    )
 }

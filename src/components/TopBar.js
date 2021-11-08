@@ -10,7 +10,9 @@ export const TopBar = () => {
 
    const exit = () => {
       dispatch(logout())
-      history.push('/login')
+      setTimeout(() => {
+         history.push('/login')
+      }, 2000);
    }
 
    return (
