@@ -40,6 +40,7 @@ export const ClocksPage = () => {
                   type='text'
                   {...register('paramToggleClock')}
                />
+               <button type='submit'>Add clock</button>
             </form>
             <div>
                <p>Example : '+5' or '-5' on seconds Input!!!</p>
