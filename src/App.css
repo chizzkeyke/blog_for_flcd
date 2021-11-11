@@ -98,7 +98,7 @@
     border-radius: 5px;  
 }
 
-/* Clocks  */
+/* Clocks Page  */
 
 .clock_page__container {
     display: flex;
@@ -116,3 +116,26 @@
     margin: 40px auto;
 }
 
+.cards { 
+    display: flex;
+    margin: 0 auto;
+    width: 500px;
+    flex-direction: column;
+
+}
+
+/****************  Clock_card  *******************/
+
+.card_clock__container {
+    display: flex;
+    width: 300px;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    padding: 4px 8px;
+    justify-content: space-between;
+    align-items: center;
+    
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

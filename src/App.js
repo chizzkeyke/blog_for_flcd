@@ -9,12 +9,14 @@ import { TopBar } from './components/TopBar'
 import { UserList } from './components/pages/UserList'
 import { ProfileUser } from './components/pages/Profile'
 import { Weather } from './components/pages/Weather'
+import { ClocksPage } from './components/pages/ClocksPage'
 
 export const App = () => {
    return (
       <BrowserRouter>
          <TopBar />
          <Switch>
+            <Route path='/clocks_page' component={ClocksPage} />
             <Route path='/users/:id' component={ProfileUser} exact />
             <Route path='/users?page=:id' component={UserList} />
             <Route path='/users' component={UserList} />
