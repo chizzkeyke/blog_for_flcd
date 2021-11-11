@@ -24,8 +24,7 @@ export const TopBar = () => {
                   ? (
                      <ul id="nav-mobile" className="right hide-on-med-and-down">
                         <li><NavLink to='/users'>Users</NavLink></li>
-                        <li><NavLink to='/'>Posts</NavLink></li>
-                        <li><NavLink to='/'>Posts</NavLink></li>
+                        <li><NavLink to='/weather'>Weather</NavLink></li>
                         <li><button onClick={exit} className="waves-effect waves-light btn-large">LOGOUT</button></li>
                      </ul>
                   )

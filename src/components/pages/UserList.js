@@ -3,9 +3,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getListUser } from '../../DAL/getListUsers'
 import { Redirect } from 'react-router-dom'
 import { nanoid } from 'nanoid'
-
+import { useHistory } from 'react-router-dom'
 import { Table, Avatar } from 'antd'
 import { Pagination } from '../Pagination'
+
+import '../../App.css'
 
 export const UserList = props => {
    const loggedIn = useSelector(state => state.auth.isAuth)
@@ -13,6 +15,7 @@ export const UserList = props => {
    const loading = useSelector(state => state.auth.loading)
    const totalPages = useSelector(state => state.user.users.total_pages)
    const dispatch = useDispatch()
+   const history = useHistory()
 
    const paramProps = props.location.search === ''
    const currentPage = paramProps ? 1 : Number(props.location.search.substr(6))
@@ -45,6 +48,7 @@ export const UserList = props => {
             title: 'ID',
             dataIndex: 'id',
             key: 'id',
+            // render: id => <Link to={`/users/${id}`}>{id}</Link>
          },
          {
             title: 'FirstName',
@@ -74,10 +78,20 @@ export const UserList = props => {
       }
 
       createNewUserData()
+      console.log(<Table />)
 
       return (
          <>
-            <Table dataSource={newUsersData} columns={columns} pagination={false} />
+            <Table
+               dataSource={newUsersData}
+               columns={columns}
+               onRow={(record) => {
+                  return {
+                     onClick: () => history.push(`/users/${record.id}`)
+                  }
+               }}
+               pagination={false}
+            />
             <Pagination totalPages={totalPages} current={currentPage} />
          </>
       )

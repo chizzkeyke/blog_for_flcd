@@ -1,3 +1,9 @@
+/* Pagination */
+* div, h1,h2,h3 {
+    margin: 0;
+    box-sizing: border-box;
+}
+
 .block-pagination {
     margin: 0 auto;
     margin-top: 20px;
@@ -10,5 +16,103 @@
     align-items: center;
 }
 
+/* Profile User *********************************/
 
+.profileuser {
+    display: flex;
+    margin: 30px auto;
+    height: auto;
+    width: 400px;
+    max-width: 100%; 
+
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+.profileuser_inner {
+    display: flex;
+    margin: 20px;
+
+    flex-direction: column;
+}
+
+.profileuser_inner__photo {
+    margin: auto;
+}
+
+.profileuser_inner__btn button {
+    display: block;
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+    background: rgb(223, 124, 78);
+    transition: background .6 linear;
+}
+
+.profileuser_inner__btn button:hover {
+    background: rgb(255, 0, 0);
+}
+
+/* Wather Card ***********************************/
+
+.weather__container {
+    margin: 40px auto;
+    width: 400px;
+    max-width: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.weather__input {
+    display: flex;
+    margin: 0 auto;
+    width: 300px;
+
+    flex-direction: column;   
+    align-items: center;
+}
+
+.weather__input button {
+    width: 200px;
+    height: 40px;
+}
+
+.weather__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.weather_card__container {
+    margin: 20px auto;
+    width: 300px;
+    display: flex;
+    padding: 40px;
+
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ccc;
+    border-radius: 5px;  
+}
+
+/* Clocks  */
+
+.clock_page__container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+
+    width: 700px;
+    max-width: 100%;
+}
+
+.input_fields {
+    display: flex;
+    flex-direction: column;
+
+    margin: 40px auto;
+}
 
