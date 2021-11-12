@@ -4,9 +4,7 @@ import { CardClock } from '../CardClock'
 import { nanoid } from 'nanoid'
 
 export const ClocksPage = () => {
-   const [data, setData] = useState([
-      { nameClock: 'winter', time: '+0' }
-   ])
+   const [data, setData] = useState([])
 
    const { register, handleSubmit, reset } = useForm()
 
@@ -20,7 +18,6 @@ export const ClocksPage = () => {
          clockName: '',
          paramToggleClock: ''
       })
-      console.log(typeof paramToggleClock);
       setData([...data, newCard])
    }
 
@@ -34,10 +31,12 @@ export const ClocksPage = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                <input
                   type='text'
+                  placeholder='Введите название'
                   {...register('clockName')}
                />
                <input
                   type='text'
+                  placeholder='Введите время'
                   {...register('paramToggleClock')}
                />
                <button type='submit'>Add clock</button>

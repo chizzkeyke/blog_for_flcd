@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink, useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../redux/auth/actions/actionsCreators'
+import { Watch } from './Watch'
 
 export const TopBar = () => {
    const dispatch = useDispatch()
@@ -23,6 +24,7 @@ export const TopBar = () => {
                loggedIn
                   ? (
                      <ul id="nav-mobile" className="right hide-on-med-and-down">
+                        <li><Watch /></li>
                         <li><NavLink to='/clocks_page'>Clocks</NavLink></li>
                         <li><NavLink to='/users'>Users</NavLink></li>
                         <li><NavLink to='/weather'>Weather</NavLink></li>

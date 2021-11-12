@@ -121,6 +121,8 @@
     margin: 0 auto;
     width: 500px;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
 }
 
