@@ -25,6 +25,8 @@ export const ClocksPage = () => {
       setData(data.filter((clock) => clock.id !== id))
    }
 
+   console.log('soem')
+
    return (
       <div className='clock_page__container'>
          <div className='input_fields'>
