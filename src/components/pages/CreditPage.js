@@ -1,11 +1,11 @@
 import React from 'react'
+import { CreditCalc } from '../CreditCalc'
 
 export const CreditPage = () => {
+
    return (
       <div className='creditpage_container'>
-         <div className='creditpage_inner'>
-            <div className=''></div>
-         </div>
+         <CreditCalc />
       </div>
    )
 }  

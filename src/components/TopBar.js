@@ -25,6 +25,7 @@ export const TopBar = () => {
                   ? (
                      <ul id="nav-mobile" className="right hide-on-med-and-down">
                         <li><Watch /></li>
+                        <li><NavLink to='/credit'>Credit</NavLink></li>
                         <li><NavLink to='/clocks_page'>Clocks</NavLink></li>
                         <li><NavLink to='/users'>Users</NavLink></li>
                         <li><NavLink to='/weather'>Weather</NavLink></li>

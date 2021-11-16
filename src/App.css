@@ -141,3 +141,50 @@
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
+/**************************** Credit Calc **************************************/
+
+.credit_calc {
+    margin: 15px auto;
+    width: 800px;
+    padding: 20px;
+
+    background-color: rgb(235, 231, 231);
+
+    border: 2px solid #ccc;
+    border-radius: 10px;
+}
+
+.credit_calc_inner {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputs_credit {
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.input_results {
+    display: block;
+    background-color: whitesmoke;
+ }
+
+.result {
+    margin: 20px;
+}
+
+.result_inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.result_inner h4 {
+    font-weight: 600;
+}
+
+
