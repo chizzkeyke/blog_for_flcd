@@ -1,6 +1,7 @@
 import React from 'react'
 import { Results } from '../components/Results'
 import { FastChooseOnParcents, FastChooseOnYears, FastChooseOnStartPayment } from './FastChoose'
+import { Slider } from '@material-ui/core'
 
 export const InputRealEstate = ({ register, resultRealEstate, setValue, watch }) => {
    return (
@@ -10,10 +11,22 @@ export const InputRealEstate = ({ register, resultRealEstate, setValue, watch })
                <span>Стоимость недвижимости</span>
                <input
                   type='number'
-                  step={100000}
-                  min={0}
+                  step={10000}
+                  min={500000}
                   inputMode='numerics'
                   {...register('realEstatePrice')}
+               />
+               <Slider
+                  value={watch('realEstatePrice')}
+                  min={500000}
+                  max={90000000}
+                  onChange={(event, newValue) => {
+                     if ((Number(watch('realEstatePrice')) - Number(watch('startPayment'))) === 500) {
+                        return
+                     } else {
+                        setValue('realEstatePrice', newValue)
+                     }
+                  }}
                />
             </div>
 
@@ -25,9 +38,17 @@ export const InputRealEstate = ({ register, resultRealEstate, setValue, watch })
                   min={0}
                   {...register('startPayment')}
                />
+               <Slider
+                  value={watch('startPayment')}
+                  min={500000}
+                  max={Number(watch('realEstatePrice'))}
+                  onChange={(event, newValue) => {
+                     setValue('startPayment', newValue)
+                  }}
+               />
             </div>
-            <FastChooseOnStartPayment 
-               setValue={setValue} 
+            <FastChooseOnStartPayment
+               setValue={setValue}
                watch={watch}
             />
 
@@ -39,9 +60,17 @@ export const InputRealEstate = ({ register, resultRealEstate, setValue, watch })
                   min={0}
                   {...register('years')}
                />
+               <Slider
+                  value={watch('years')}
+                  min={1}
+                  max={40}
+                  onChange={(event, newValue) => {
+                     setValue('years', newValue)
+                  }}
+               />
             </div>
-            <FastChooseOnYears 
-               setValue={setValue} 
+            <FastChooseOnYears
+               setValue={setValue}
             />
 
             <div>
@@ -52,8 +81,16 @@ export const InputRealEstate = ({ register, resultRealEstate, setValue, watch })
                   min={0}
                   {...register('parcent')}
                />
+               <Slider
+                  value={watch('parcent')}
+                  min={1}
+                  max={40}
+                  onChange={(event, newValue) => {
+                     setValue('parcent', newValue)
+                  }}
+               />
             </div>
-            <FastChooseOnParcents 
+            <FastChooseOnParcents
                setValue={setValue}
             />
          </form>

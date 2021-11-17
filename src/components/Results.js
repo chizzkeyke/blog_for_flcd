@@ -12,6 +12,7 @@ export const Results = ({ results }) => {
             <div>Проценты {parcent} ₽</div>
             <div>Проценты + Кредит {creditPlusParcent} ₽</div>
             <div>Необходимый доход {requiredIncome} ₽</div>
+            <button onClick={() => console.log({...results})}>Подать заявку</button>
          </div>
       </div>
    )

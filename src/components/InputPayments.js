@@ -1,8 +1,9 @@
 import React from 'react'
 import { Results } from '../components/Results'
 import { FastChooseOnYears, FastChooseOnParcents } from './FastChoose'
+import { Slider } from '@material-ui/core'
 
-export const InputPayments = ({ register, resultCredit, setValue }) => {
+export const InputPayments = ({ register, resultCredit, setValue, watch }) => {
 
    return (
       <div className='inputs_credit'>
@@ -15,6 +16,14 @@ export const InputPayments = ({ register, resultCredit, setValue }) => {
                   min={0}
                   {...register('everyMouthPayment')}
                />
+               <Slider
+                  value={watch('everyMouthPayment')}
+                  min={100000}
+                  max={9000000}
+                  onChange={(event, newValue) => {
+                     setValue('everyMouthPayment', newValue)
+                  }}
+               />
             </div>
             <div>
                <span>Первоначальный взнос</span>
@@ -24,6 +33,14 @@ export const InputPayments = ({ register, resultCredit, setValue }) => {
                   min={0}
                   {...register('startPayment')}
                />
+               <Slider
+                  value={watch('startPayment')}
+                  min={100000}
+                  max={9000000}
+                  onChange={(event, newValue) => {
+                     setValue('startPayment', newValue)
+                  }}
+               />
             </div>
             <div>
                <span>Срок кредита</span>
@@ -32,6 +49,14 @@ export const InputPayments = ({ register, resultCredit, setValue }) => {
                   step={1}
                   min={0}
                   {...register('years')}
+               />
+               <Slider
+                  value={watch('years')}
+                  min={1}
+                  max={40}
+                  onChange={(event, newValue) => {
+                     setValue('years', newValue)
+                  }}
                />
             </div>
             <FastChooseOnYears
@@ -44,6 +69,14 @@ export const InputPayments = ({ register, resultCredit, setValue }) => {
                   step={1}
                   min={0}
                   {...register('parcent')}
+               />
+               <Slider
+                  value={watch('parcent')}
+                  min={1}
+                  max={40}
+                  onChange={(event, newValue) => {
+                     setValue('parcent', newValue)
+                  }}
                />
             </div>
             <FastChooseOnParcents

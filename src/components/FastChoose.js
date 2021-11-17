@@ -1,24 +1,27 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { nanoid } from 'nanoid'
 
 function ButtonFastChooseParcent({ num, setValue }) {
+
    return (
       <button
-         className='btn_fast_choose_calc'
-         onClick={() => setValue('parcent', num)}
+         className={'btn_fast_choose_calc'}
+         onClick={() => {
+            setValue('parcent', num)
+         }}
       >
          {num + ' %'}
       </button>
    )
 }
 
-function ButtonFastChooseFirstPayment({ num, setValue, watch, toggleActive, active }) {
+function ButtonFastChooseFirstPayment({ num, setValue, watch }) {
+
    return (
       <button
-         className={active ? 'btn_fast_choose_calc' : 'btn_fast_choose_calc active' }
+         className={'btn_fast_choose_calc'}
          onClick={() => {
             setValue('startPayment', String(Number(watch('realEstatePrice')) * (num / 100)))
-            toggleActive()
          }}
       >
          {num + ' %'}
@@ -27,10 +30,13 @@ function ButtonFastChooseFirstPayment({ num, setValue, watch, toggleActive, acti
 }
 
 function ButtonFastChooseYears({ num, setValue }) {
+
    return (
       <button
-         className='btn_fast_choose_calc'
-         onClick={() => setValue('years', num)}
+         className={'btn_fast_choose_calc'}
+         onClick={() => {
+            setValue('years', num)
+         }}
       >
          {num + ' лет'}
       </button>
@@ -38,11 +44,6 @@ function ButtonFastChooseYears({ num, setValue }) {
 }
 
 export const FastChooseOnStartPayment = ({ setValue, watch }) => {
-   const [active, setActive] = useState(false)
-
-   const toggleActive = () => {
-      setActive(!active)
-   }
 
    return (
       <div className='btn_fast_choose_calc_container'>
@@ -52,8 +53,6 @@ export const FastChooseOnStartPayment = ({ setValue, watch }) => {
                setValue={setValue}
                watch={watch}
                key={nanoid()}
-               active={active}
-               toggleActive={toggleActive}
             />
          ))}
       </div>
@@ -61,11 +60,7 @@ export const FastChooseOnStartPayment = ({ setValue, watch }) => {
 }
 
 export const FastChooseOnYears = ({ setValue }) => {
-   const [active, setActive] = useState(false)
 
-   const toggleActive = () => {
-      setActive(!active)
-   }
 
    return (
       <div className='btn_fast_choose_calc_container'>
@@ -81,12 +76,8 @@ export const FastChooseOnYears = ({ setValue }) => {
 }
 
 export const FastChooseOnParcents = ({ setValue }) => {
-   const [active, setActive] = useState(false)
 
-   const toggleActive = () => {
-      setActive(!active)
-   }
-   
+
    return (
       <div className='btn_fast_choose_calc_container'>
          {[4.5, 6, 7.5, 9.1, 10].map(num => (
