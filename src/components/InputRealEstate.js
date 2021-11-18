@@ -1,13 +1,15 @@
 import React from 'react'
 import { Results } from '../components/Results'
-import { FastChooseOnParcents, FastChooseOnYears, FastChooseOnStartPayment } from './FastChoose'
+import { FastChooseOnParcents, FastChooseOnYears, FastChooseOnStartPayment } from './FastChooseContainers'
 import { Slider } from '@material-ui/core'
 
 export const InputRealEstate = ({ register, resultRealEstate, setValue, watch }) => {
+   const { mouthPayment } = resultRealEstate
+
    return (
       <div className='inputs_credit'>
-         <form>
-            <div>
+         <form className='inputs_credit_payments_realestate'>
+            <div >
                <span>Стоимость недвижимости</span>
                <input
                   type='number'
@@ -21,7 +23,7 @@ export const InputRealEstate = ({ register, resultRealEstate, setValue, watch })
                   min={500000}
                   max={90000000}
                   onChange={(event, newValue) => {
-                     if ((Number(watch('realEstatePrice')) - Number(watch('startPayment'))) === 500) {
+                     if (mouthPayment < 500) {
                         return
                      } else {
                         setValue('realEstatePrice', newValue)

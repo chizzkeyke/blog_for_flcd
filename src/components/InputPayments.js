@@ -1,13 +1,13 @@
 import React from 'react'
 import { Results } from '../components/Results'
-import { FastChooseOnYears, FastChooseOnParcents } from './FastChoose'
+import { FastChooseOnYears, FastChooseOnParcents } from './FastChooseContainers'
 import { Slider } from '@material-ui/core'
 
 export const InputPayments = ({ register, resultCredit, setValue, watch }) => {
 
    return (
       <div className='inputs_credit'>
-         <form>
+         <form className='inputs_credit_payments_realestate'>
             <div>
                <span>Ежемесячный платеж</span>
                <input

@@ -10,6 +10,8 @@ export function CreditCalc() {
    const [showRealEstate, setShowRealEstate] = useState(true)
    const [showCredits, setShowCredits] = useState(false)
    const [showPayments, setShowPayments] = useState(false)
+   const [activeBtn, setActiveBtn] = useState('')
+
 
    const { register, watch, setValue } = useForm({
       defaultValues: {
@@ -128,17 +130,23 @@ export function CreditCalc() {
                                  register={register} 
                                  resultRealEstate={resultRealEstate()}
                                  setValue={setValue}
-                                 watch={watch} />}
+                                 watch={watch}
+                                 activeBtn={activeBtn}
+                                 setActiveBtn={setActiveBtn} />}
             {showCredits && <InputCredits 
                                  register={register} 
                                  resultCredit={resultCredit()}
                                  setValue={setValue}
-                                 watch={watch} />}
+                                 watch={watch}
+                                 activeBtn={activeBtn}
+                                 setActiveBtn={setActiveBtn} />}
             {showPayments && <InputPayments 
                                  register={register} 
                                  resultCredit={resultPayment()}
                                  setValue={setValue}
-                                 watch={watch} />}
+                                 watch={watch}
+                                 activeBtn={activeBtn}
+                                 setActiveBtn={setActiveBtn} />}
          </div>
       </div>
    )

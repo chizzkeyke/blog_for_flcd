@@ -212,6 +212,7 @@
     display: block;
     width: auto;
     border-radius: 5px;
+    color: rgb(255, 255, 255);
     border: none;
     height: auto;
     outline: none;
@@ -241,4 +242,64 @@
     text-align: center;
 }
 
+.btn_fast_choose_calcactive {
+    padding: 2px 8px;
+    margin-right: 5px;
+    display: block;
+    width: auto;
+    font-size: 15px;
+    border: none;
+    border-radius: 12px;
+    background-color: #26a69a;
+    color: #fff;
+    outline: none;
 
+    text-align: center;
+}
+
+/********************** Inputs Credit Calc  *************/
+
+.inputs_credit_payments_realestate input{
+    margin: 4px !important;
+    outline: none !important;
+    color: 000;
+    background-color: #fff !important;
+    border-bottom: none !important;
+    border-radius: 10px !important;
+    padding: 3px 5px !important;
+}
+
+/* Button send message in bank */
+
+.btn_send_message_in_bank {
+    display: block;
+    margin:0 auto;
+    margin-top: 20px;
+    width: 150px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    background-color: #26a69a;
+    color: #fff;
+    outline: none
+}
+/* Result credit */
+
+.result_credit {
+    padding-left: 0;
+}
+
+.result_credit_inner {
+    display: flex;
+    flex-direction: column;
+}
+
+.result_calc_title{ 
+    margin: 10px auto;
+}
+
+.results_credit {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
