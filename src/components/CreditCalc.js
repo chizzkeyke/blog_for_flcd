@@ -5,6 +5,8 @@ import { ButtonsCalc } from '../components/ButtonsCalc'
 import { InputCredits } from './InputCredits'
 import { InputPayments } from './InputPayments'
 import { InputRealEstate } from './InputRealEstate'
+import { ChartCredit } from './GraphicCredit'
+import { dataForCharts } from '../utils/getDataForCharts'
 
 export function CreditCalc() {
    const [showRealEstate, setShowRealEstate] = useState(true)
@@ -53,11 +55,11 @@ export function CreditCalc() {
       const parcentAmount = getPercentages(creditAmount, mouthPayment, parcent, years)
       const creditPlusParcent = parcentAmount + creditAmount
       const requiredIncome = (mouthPayment * 1.6).toFixed()
-      
-      if (creditAmount < 0 || mouthPayment < 0 || parcentAmount < 0 || creditPlusParcent < 0) {
+
+      if (creditAmount < 500 || mouthPayment < 0 || parcentAmount < 0 || creditPlusParcent < 0) {
          return {
-            credit: 0,
-            parcent: 0,
+            credit: 500,
+            parcent: 1,
             creditPlusParcent: 0,
             requiredIncome: 0,
             mouthPayment: 0,
@@ -120,33 +122,72 @@ export function CreditCalc() {
    return (
       <div className='credit_calc'>
          <div className='credit_calc_inner'>
-            <ButtonsCalc 
+            <ButtonsCalc
                toggle={toggleLinks}
                showRealEstate={showRealEstate}
                showCredits={showCredits}
                showPayments={showPayments}
             />
-            {showRealEstate && <InputRealEstate 
-                                 register={register} 
-                                 resultRealEstate={resultRealEstate()}
-                                 setValue={setValue}
-                                 watch={watch}
-                                 activeBtn={activeBtn}
-                                 setActiveBtn={setActiveBtn} />}
-            {showCredits && <InputCredits 
-                                 register={register} 
-                                 resultCredit={resultCredit()}
-                                 setValue={setValue}
-                                 watch={watch}
-                                 activeBtn={activeBtn}
-                                 setActiveBtn={setActiveBtn} />}
-            {showPayments && <InputPayments 
-                                 register={register} 
-                                 resultCredit={resultPayment()}
-                                 setValue={setValue}
-                                 watch={watch}
-                                 activeBtn={activeBtn}
-                                 setActiveBtn={setActiveBtn} />}
+            {showRealEstate && (
+               <>
+                  <InputRealEstate
+                     register={register}
+                     resultRealEstate={resultRealEstate()}
+                     setValue={setValue}
+                     watch={watch}
+                     activeBtn={activeBtn}
+                     setActiveBtn={setActiveBtn} />
+                  <ChartCredit
+                     data={dataForCharts(
+                        Number(resultRealEstate().credit), 
+                        Number(resultRealEstate().mouthPayment),
+                        Number(watch('parcent')),
+                        Number(watch('years')),
+                        Number(watch('startPayment'))
+                     )}
+                  />
+               </>
+            )}
+            {showCredits && (
+               <>
+                  <InputCredits
+                     register={register}
+                     resultCredit={resultCredit()}
+                     setValue={setValue}
+                     watch={watch}
+                     activeBtn={activeBtn}
+                     setActiveBtn={setActiveBtn} />
+                  <ChartCredit 
+                     data={dataForCharts(
+                        Number(watch('creditAmount')), 
+                        Number(resultCredit().mouthPayment),
+                        Number(watch('parcent')),
+                        Number(watch('years')),
+                        0
+                     )}
+                  />
+               </>
+            )}
+            {showPayments && (
+               <>
+                  <InputPayments
+                     register={register}
+                     resultCredit={resultPayment()}
+                     setValue={setValue}
+                     watch={watch}
+                     activeBtn={activeBtn}
+                     setActiveBtn={setActiveBtn} />
+                  <ChartCredit 
+                     data={dataForCharts(
+                        Number(resultPayment().credit), 
+                        Number(watch('everyMouthPayment')),
+                        Number(watch('parcent')),
+                        Number(watch('years')),
+                        0
+                     )}
+                  />
+               </>
+            )}
          </div>
       </div>
    )

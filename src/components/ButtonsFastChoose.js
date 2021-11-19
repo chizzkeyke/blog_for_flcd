@@ -9,7 +9,7 @@ export function ButtonFastChooseFirstPayment({ num, setValue, watch, id }) {
          id={id}
          className={String(id) === String(activeBtn) ? 'btn_fast_choose_calcactive' : 'btn_fast_choose_calc'}
          onClick={(e) => {
-            setValue('startPayment', String(Number(watch('realEstatePrice')) * (num / 100)))
+            setValue('startPayment', Number(Math.round((watch('realEstatePrice')) * (num / 100))))
             setActiveBtn(String(id))
          }}
       >
